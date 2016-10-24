@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-<!-- Mirrored from themes.orcaslabs.com/posted/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 13 Oct 2016 21:16:21 GMT -->
+ 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -98,21 +97,6 @@
 			  <li><a href="contact.html">Contact</a></li>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right toolbar">
-				<li><a href="#" class="demo-icon icon-gplus social-icons"></a></li>
-				<li><a href="#" class="demo-icon icon-pinterest social-icons"></a></li>
-				<li><a href="#" class="demo-icon icon-facebook social-icons"></a></li>
-				<li><a href="#" class="demo-icon icon-twitter social-icons"></a></li>
-				<li><a href="#" class="demo-icon icon-vimeo social-icons"></a></li>
-				<li><a href="#" class="demo-icon icon-rss social-icons"></a></li>
-				<li>
-				<div class="search-block">
-					<form>
-					<input type="search" placeholder="Search">
-					</form>
-				</div>
-				</li>				
-            </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
     </nav>
