@@ -52,51 +52,17 @@
 				  <li><a href="home-sidebar.html">Home V6 (Sidebar)</a></li>
                 </ul>
               </li>
-			  
-			  <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="category1.html">Category list V1</a></li>
-                  <li><a href="category2.html">Category list V2</a></li>
-				  <li><a href="category3.html">Category list V3</a></li>
-				  <li><a href="category4.html">Category list V4</a></li>
-                </ul>
-              </li>
-			  
-			  <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="single-page.html">Single Page</a></li>
-                  <li><a href="single-page-image.html">Single Page with Image</a></li>
-				  <li><a href="single-page-video.html">Single Page with Video</a></li>
-				  <li><a href="single-post.html">Single Post</a></li>
-				  <li><a href="single-post-full.html">Single Post Full-Width</a></li>
-				  <li><a href="single-post-video.html">Single Post with Video</a></li>
-                </ul>
-              </li>
-			  
-			  <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extra <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-				  <li><a href="gallery.html">Gallery Grid Lightbox</a></li>
-                  <li><a href="author.html">Author Page</a></li>
-                  <li><a href="search-result.html">Search Results</a></li>
-				  <li><a href="404.html">404 Page</a></li>
-                </ul>
-              </li>
-			  
-			  <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-				  <li><a href="shop-grid.html">Shop Category</a></li>
-                  <li><a href="shop-product.html">Shop Product</a></li>
-                  
-                </ul>
-              </li>
-			  
-			  
-			  <li><a href="contact.html">Contact</a></li>
+
+             
             </ul>
+
+            <ul class="nav navbar-nav navbar-right toolbar">
+				<li><a href="#" >Login</a></li>
+				<li><a href="<?php echo base_url();?>authuser/register" >Register</a></li>
+				
+				</li>				
+            </ul>
+           
 
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

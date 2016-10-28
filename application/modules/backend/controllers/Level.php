@@ -7,6 +7,8 @@ class Level extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('levelmodel','model');
+		login();
+		hak_akses();
 		
 	}
 

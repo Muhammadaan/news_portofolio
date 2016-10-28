@@ -6,6 +6,8 @@ class Dhasboard extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		login();
+		// hak_akses();
 		
 	}
 

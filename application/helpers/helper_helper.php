@@ -1,6 +1,6 @@
 <?php
 	
-	function is_login()
+	function login()
 	{
 		$CI =& get_instance();
 	    $is_logged_in = $CI->session->userdata('back_userid');
@@ -147,7 +147,7 @@
         $ci =& get_instance();
         $ci->load->model('Authmodel', 'model');
         $url        = $ci->uri->segment(2);
-        $d          = $ci->model->cek_akses($ci->session->userdata('kk_level'));
+        $d          = $ci->model->cek_akses($ci->session->userdata('back_level'));
         $array_d    = explode(',', str_replace(" ", "", $d));
         $akses      = 0;
         foreach ($array_d as $key ) {
@@ -155,11 +155,12 @@
         }
 
 
-        $level = $ci->session->userdata('kk_level');
+        $level = $ci->session->userdata('back_level');
 
         if($akses == 0){
             if ($level == 1) {
-                    redirect("backend/dashboard");
+                    redirect("backend/dhasboard");
+
                 }else if ($level == 2) {
                     redirect("costumer/dashboardcostumer");
                 }

@@ -7,6 +7,8 @@ class Admins extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('adminsmodel','model');
+		login();
+		hak_akses();
 	}
 
 	public function index()
@@ -53,7 +55,8 @@ class Admins extends CI_Controller {
 	public function edit($id)
 	{
 		$this->form_validation->set_rules('name', 'name', 'trim|required');
-		$this->form_validation->set_rules('name', 'name', 'trim|required');
+		$this->form_validation->set_rules('hak_akses', 'hak_akses', 'trim|required');
+
 		if ($this->form_validation->run() == TRUE) {
 			$this->model->edit(to_Decrypt($id));
 			$this->session->set_flashdata('success_message', "Update admins success");

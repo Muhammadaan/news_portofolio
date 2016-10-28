@@ -74,6 +74,17 @@ class Categorymodel extends CI_Model {
 		return true;
 	}
 
+
+	public function cek_akses($id_level)
+		    {   
+		        $this->db->where('id_level', $id_level);
+		        $this->db->limit(1);
+		        $query = $this->db->get("level_access");
+		        $akses = $query->result();
+
+		        return $akses[0]->hak_akses;
+		    }
+
 }
 
 /* End of file categorymodel.php */

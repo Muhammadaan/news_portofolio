@@ -7,6 +7,8 @@ class Category extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('categorymodel','model');
+		login();
+		hak_akses();
 	}
 
 	public function index()

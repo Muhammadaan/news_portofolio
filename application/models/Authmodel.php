@@ -34,6 +34,20 @@ class Authmodel extends CI_Model {
 		$password = $password->result();
 		return $password;
 	}
+
+
+	public function cek_akses($id_level)
+    {   
+
+        $this->db->select('hak_akses');
+        $this->db->from('level_access');
+        $this->db->where('id_level', $id_level);
+        $this->db->limit(1);
+        $query = $this->db->get();
+        $akses = $query->result();
+
+        return $akses[0]->hak_akses;
+    }
 	
 
 

@@ -39,8 +39,27 @@
                  <input type="text" class="form-control" id="tags" name="tags" >
                 </div>
                 <div class="form-group">
-                  <label>Kategori</label>
-                 <input type="text" class="form-control" id="kategori" name="kategori" >
+                  <label>Categori</label>
+                  
+                  <select class="form-control" name="category" id="category" >
+                        <option value="" > Choose Category  </option>
+                            
+                            <?php foreach ($categorys as $cat): ?>
+
+                                <option value=" <?php echo$cat->id;?>">
+                                        <?php echo $cat->name  ; ?>
+                                 </option>
+                                
+                            <?php endforeach ?>
+
+                      
+
+                  </select>
+
+
+
+
+
                 </div>
                  <div class="form-group">
                   <label>Vidio Url</label>
@@ -75,7 +94,7 @@
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary submit">Submit</button>
                 <button type="reset" class="btn btn-primary reset">Reset</button>              
-                <a href=" <?php echo base_url();?>backend/admins"> <button type="button" class="btn btn-primary ">Back</button></a>
+                <a href=" <?php echo base_url();?>backend/article"> <button type="button" class="btn btn-primary ">Back</button></a>
               </div>
             </form>
           
