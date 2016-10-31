@@ -8,10 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 	
-	<link rel="icon" type="image/png" href="img/favicon.png" />
-
-    <title>Posted - News/Magazine Bootstrap HTML5 template</title>
-
+    <title></title>
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url();?>assets/frontend/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/frontend/css/main.css" rel="stylesheet">
@@ -34,12 +31,30 @@
             </button>
             
 			<a class="navbar-brand" href="#">
-				<img alt="Posted News/Magazine Theme" src="img/posted_theme_logo.png">
+				<!-- <img alt="Posted News/Magazine Theme" src="img/posted_theme_logo.png"> -->
 			</a>
 			
           </div>
           <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
+            
+            <?php 
+            		if ( $this->session->userdata('back_userid')) { ?>
+
+            			<ul class="nav navbar-nav">
+              
+              
+
+             
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right toolbar">
+				<li><a href="<?php echo base_url();?>authuser/logout" >Logout</a></li>
+				
+				</li>				
+            </ul>   
+            			
+            	<?php	} else { ?>
+            	<ul class="nav navbar-nav">
               
               <li class="active dropdown">
                 <a href="index-2.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span class="caret"></span></a>
@@ -57,11 +72,16 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right toolbar">
-				<li><a href="#" >Login</a></li>
+				<li><a href=" <?php echo base_url()?>authuser/login">Login</a></li>
 				<li><a href="<?php echo base_url();?>authuser/register" >Register</a></li>
 				
 				</li>				
             </ul>
+            			
+            <?php }?>
+
+
+            
            
 
           </div><!--/.nav-collapse -->

@@ -4,9 +4,31 @@
 
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
+                   
+
+            <?php if(isset($success_message)): ?>
+          <div class="alert alert-success" id="success-alert" >
+            <?php echo $success_message ?>  
+          </div>
+        <?php endif; ?>
+
 
 					<p align="center"> Form Register </p>
-					<form class="form-horizontal" id="form">
+
+                        <?php if(isset($success_message)): ?>
+                      <div class="alert alert-success" id="success-alert" >
+                        <?php echo $success_message ?>  
+                      </div>
+                    <?php endif; ?>
+
+
+                        <?php if(isset($error_message)): ?>
+                      <div class="alert alert-success" id="error-alert" >
+                        <?php echo $error_message ?>  
+                      </div>
+                    <?php endif; ?>
+
+					<form class="form-horizontal" id="form" method="post">
 					  <div class="form-group">
 						<label >Name</label>
 						<div >

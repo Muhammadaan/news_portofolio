@@ -7,7 +7,7 @@ $config['recaptcha_secret_key'] = '6LcT2QcUAAAAAOm9RMylbQD2PBTqtdavYzkOIPmf';
 
 // reCAPTCHA supported 40+ languages listed here:
 // https://developers.google.com/recaptcha/docs/language
-$config['recaptcha_lang'] = 'id';
+$config['recaptcha_lang'] = 'ar';
 
 /* End of file recaptcha.php */
 /* Location: ./application/config/recaptcha.php */
