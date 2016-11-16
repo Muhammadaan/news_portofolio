@@ -34,7 +34,6 @@ class Articlemodel extends CI_Model {
 		$query = $this->db->get('');
 		$data = $query->result();
 		return $data;
-
 	}
 
 	public function get_category()
@@ -43,10 +42,8 @@ class Articlemodel extends CI_Model {
 		$query = $this->db->get('category');
 		$data =$query->result();
 		return $data;
-		
 	}
-
-	public function input($pic)
+	public function insert()
 	{
 		$status 	= ( $this->input->post('status') == 'on') ? 'active' : 'non-active';
 		$title 		= $this->input->post('title');
@@ -55,6 +52,12 @@ class Articlemodel extends CI_Model {
 		$tag 		= $this->input->post('tags');
 		$category 	= $this->input->post('category');
 		$vidio_url  = $this->input->post('vidio_url');
+
+		if($_FILES['image']['size'] > 0)
+        {
+            $pic   = do_upload_single('image', './uploads/blog/');
+            $this->db->set("image", 'uploads/blog/'.$pic['data']['file_name']);
+        }
 
 		$this->db->set("status",$status)
 				->set("title",$title)
@@ -75,22 +78,6 @@ class Articlemodel extends CI_Model {
 		$this->db->where('id', $id);
 		$this->db->set('slug', $slug );
 		$this->db->update('article');
-
-
-		  foreach ($pic['status'] as $key => $value) {
-            if(!empty($id) && $value == 'success')  
-            {
-                $this->db->set("name", $title );
-                $this->db->set("image", 'uploads/article/'.$pic['data'][$key]['file_name'] );
-                $this->db->set("parent_id", $id);
-                $this->db->set("type", 'blog');
-                $this->db->set("created_at", date("Y-m-d H:i:s"));
-                $this->db->set("created_by", $this->session->userdata('back_userid'));
-                $this->db->insert("images");
-               
-            }
-        }
-
         return true;
 
 	}
@@ -105,10 +92,49 @@ class Articlemodel extends CI_Model {
 	}
 
 
-	public function edit($id)
+	public function update($id)
 	{
+		$status 	= ( $this->input->post('status') == 'on') ? 'active' : 'non-active';
+		$title 		= $this->input->post('title');
+		$write_by 	= $this->input->post('write_by');
+		$description= $this->input->post('description');
+		$tag 		= $this->input->post('tags');
+		$category 	= $this->input->post('category');
+		$vidio_url  = $this->input->post('vidio_url');
+
+		if($_FILES['image']['size'] > 0)
+        {
+            $pic   = do_upload_single('image', './uploads/blog/');
+            $this->db->set("image", 'uploads/blog/'.$pic['data']['file_name']);
+        }
+
+		$this->db->where('id',$id)
+				->set("status",$status)
+				->set("title",$title)
+				->set("write_by",$write_by)
+				->set("description",$description)
+				->set("tags",$tag)
+				->set("type",'blog')
+				->set("category_id",$category)
+				->set("vidio_url",$vidio_url)
+				->set("created_at", date("Y-m-d H:i:s"))
+				->set("created_by", $this->session->userdata('back_userid'))
+				->update("article");
+
+
+		$id = $this->db->insert_id();
+		$slug =strtolower($title.' '.$id);
+		$slug =trim( preg_replace('/[^A-Za-z0-9-]+/','-',$slug));
+		$this->db->where('id', $id);
+		$this->db->set('slug', $slug );
+		$this->db->update('article');
+
+        
+
+        return true;
 		
 	}
+	
 
 	public function get_by_id($id)
 	{

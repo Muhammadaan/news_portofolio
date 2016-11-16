@@ -1,7 +1,7 @@
 
 <div class="login-box">
   <div class="login-logo">
-    <a href=""><b>News</b></a>
+    <a href=""><b> <?php echo label('title'); ?> </b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -49,7 +49,14 @@
     </form>
 
     <a href="#">I forgot my password</a><br>
-    <a href="register.html" class="text-center">Register a new membership</a>
+    <a href="register.html" class="text-center">Register a new membership</a><br>
+    <div style="float:right;margin-right:15px;font-size:15px;">
+        <a href="<?php echo base_url();?>auth/languages/english">English</a> |
+        <a href="<?php echo base_url();?>auth/languages/indonesia">Indonesia</a> |
+        <a href="<?php echo base_url();?>auth/languages/jawa">Jawa</a> 
+    </div>
+
+
 
   </div>
   <!-- /.login-box-body -->

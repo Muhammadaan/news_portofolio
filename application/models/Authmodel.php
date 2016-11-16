@@ -53,8 +53,3 @@ class Authmodel extends CI_Model {
 
 
 }
-// End models
-
-
-/* End of file Authmodel.php */
-/* Location: ./application/models/Authmodel.php */

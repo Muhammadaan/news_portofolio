@@ -174,6 +174,8 @@ class Authuser extends CI_Controller {
 					$this->input->post('email'),
 					$this->input->post('password')
 					);
+				// var_dump($user);
+				// exit();
 
 
 				if (is_array($user)) {
@@ -322,6 +324,36 @@ class Authuser extends CI_Controller {
 			$this->template->load('template','authuser/Change',$data);
 		}
 
+		
+	}
+
+	public function login_fb()
+	{
+		$fb =getAccessFacebookData();
+		$data['picture'] = $fb['picture'];
+		$data['id'] 	 = $fb['id'];
+		$data['email']    = $fb['email'];
+		$data['first_name']    = $fb['first_name'];
+		
+		$user = array();
+		$user =$this->model->insertfb($data);
+		// var_dump($user);
+		// exit();
+
+		if (is_array($user)) {
+					$this->session->set_userdata('back_name', $user['name']);
+					$this->session->set_userdata('back_email', $user['email']);
+					$this->session->set_userdata('back_level', $user['idlevel']);
+					$this->session->set_userdata('back_userid', $user['id']);
+
+						$access = $this->session->userdata('back_level');
+
+							if ($access == 2) {
+								redirect('home','refresh');
+							} 
+		}
+		
+		
 		
 	}
 

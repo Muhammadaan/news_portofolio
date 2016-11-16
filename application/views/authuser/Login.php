@@ -49,11 +49,12 @@
 						 <p class="help-block error_pass" style="color:blue; display:none"></p>
 					  </div>
 
-					  <button type="submit" class="btn btn-primary submit">Login</button>
+                      <button type="submit" class="btn btn-primary submit">Login</button>
+					  
 
 					</form>
                 <a href=" <?php echo base_url()?>authuser/forgot" class="btn btn-link">Forgot Password</a>
-                
+                <a href="<?php echo getFacebookLoginUrl(); ?>"> <button type="submit" class="btn btn-primary submit">Facebook</button></a>
 				</div>
 
 				<div class="col-md-2"></div>

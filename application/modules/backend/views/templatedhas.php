@@ -144,6 +144,7 @@
             <li><a href="<?php echo base_url();?>backend/article"><i class="fa fa-circle-o"></i>Article</a></li>
             <li><a href="<?php echo base_url();?>backend/category"><i class="fa fa-circle-o"></i>Category</a></li>
             <li><a href="<?php echo base_url();?> "><i class="fa fa-circle-o"></i>Gallery</a></li>
+            <li><a href="<?php echo base_url();?>backend/ads"><i class="fa fa-circle-o"></i>Ads</a></li>
           </ul>
         </li>
 

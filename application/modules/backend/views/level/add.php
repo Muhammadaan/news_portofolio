@@ -8,8 +8,8 @@
                 <?php if (isset($message_error) ) { ?>
                     <div class="alert alert-danger alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <?php echo $message_error;?>
-                    </div>            
+                <?php echo $message_error ;?>
+                       </div>       
                 <?php } ?>
 
 
@@ -24,6 +24,18 @@
                 <input type="text" class="form-control" id="name" name="name" data-rule-minlength="2">
                 
                 </div>
+
+                <select class="form-control" name="perent" id="category" >
+                        <option value="" > Choose Category  </option>
+                            
+                            <?php foreach ($perent as $p): ?>
+
+                                <option value=" <?php echo$p->id;?>">
+                                        <?php echo $p->name ; ?>
+                                 </option>
+                                
+                            <?php endforeach ?>
+                  </select>
               </div>
               <!-- /.box-body -->
 

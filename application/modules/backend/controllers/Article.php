@@ -28,19 +28,13 @@ class Article extends CI_Controller {
 		$this->form_validation->set_rules('description', 'Description', 'trim|required');
 
 
-		if ($this->form_validation->run() == TRUE) {
+		if ($this->form_validation->run() == true) {
 
-			if (!empty($_FILES['image']['size'])) {
-
-				$pic = do_upload_multiple( $attachName = 'image', $path ='./uploads/article/');
-			} else {
-				$pic = '';
-			}
-			$this->model->input($pic);
-			// var_dump($pic);
-			// exit();
+			$this->model->insert();
+			
 			$this->session->set_flashdata('success_message', 'Add Article Success');
 			redirect('backend/article','refresh');
+
 			
 		} else {
 			$data['message_error'] = ( validation_errors() ? validation_errors():  $this->session->flashdata('message_error'));
@@ -82,7 +76,7 @@ class Article extends CI_Controller {
 				$picdata = '';
 			}
 			$this->model->update(to_Decrypt($id),$picdata);
-			$this->session->set_flashdata('success_message', 'Add Article Success');
+			$this->session->set_flashdata('success_message', 'Update Succes');
 			redirect('backend/article','refresh');
 			
 		} else {

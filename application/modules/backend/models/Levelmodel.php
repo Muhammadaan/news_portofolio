@@ -9,17 +9,37 @@ class Levelmodel extends CI_Model {
 	{	
 
 		$query = $this->db->get('levels');
-		$data = $query->result();
+		$data = $query->result_array();
 		return $data;
 	}
+
 
 	public function input()
 	{
 		$name=$this->input->post('name');
+		$id_p=$this->input->post('perent');
+
 		$this->db->set('name',$name)
+				->set('parent_id',$id_p)
 				->insert('levels');
 		return true;
 	}
+
+	public function get_perent()
+	{
+		
+		$query = $this->db->get('levels');
+		$data  = $query->result();
+		return $data;
+		
+	}
+
+	public function delate($id)
+		{
+			$this->db->where('id', $id);
+			$this->db->delete('levels');
+			return true;
+		}
 
 
 	public function cek_akses($id_level)

@@ -17,6 +17,28 @@ class Level extends CI_Controller {
 	{
 		$data['success_message'] = $this->session->flashdata('success_message');
 		$data['level'] = $this->model->get_all();
+		// $level = $this->model->get_all();
+		
+		// $list = array();
+
+		// foreach ($level as $lv) {
+		// 	if($lv['parent_id'] == 0){
+		// 		// $list[$lv['id']] = $lv;
+		// 		$list[$lv['id']] = $lv  ;
+		// 	}else{
+				
+		// 			// $list[$lv['parent_id']]['child'] = $lv;
+
+				
+				
+		// 	}
+		// }
+		// echo "<pre>";
+		// var_dump($list);
+		// exit();
+		// echo "<pre>";
+		// var_dump($data['level']);
+		// exit();
 		$this->template->load('templatedhas','level/index', $data);
 		
 	}
@@ -31,11 +53,29 @@ class Level extends CI_Controller {
 			redirect('backend/level','refresh');
 		} else {
 			$data['message_error'] = (validation_errors()  ? validation_errors() : $this->session->flashdata('message_error'));
+			$data['perent'] = $this->model->get_perent();
+			// var_dump($d);
+			// exit();
 			$this->template->load('templatedhas','level/add',$data);
 		}
 
 
 
+
+	}
+
+	public function delate($id)
+	{
+		$query =$this->model->delate(to_Decrypt($id));
+
+		if ($query) {
+			$this->session->set_flashdata('success_message', 'Delate article Success');
+			redirect('backend/level','refresh');
+		} else {
+			$this->session->set_flashdata('error_message', 'Delate Article Error');
+			redirect('backend/level','refresh');
+		}
+		
 	}
 
 

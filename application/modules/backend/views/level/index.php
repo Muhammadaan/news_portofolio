@@ -36,25 +36,35 @@
               <table id="datatables1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>No</th>
+                  <th>Id</th>
                   <th>Name</th>
+                  <th>Perent</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
+
                     <?php 
                         $no = 1;
                         foreach ($level as $lv) {
                         
                      ?>
                      <tr>
-                     <td><?php echo $no; ?></td>
-                     <td><?php echo $lv->name;?></td>
+                     <?php if ($lv['parent_id'] == 1) { ?>
+                     <td><?php echo $lv['id'] ?></td>
+                      <td><?php echo"----" ,$lv['name'];?></td>
+                     <td><?php echo $lv['parent_id']; ?></td>
+                   <?php   } else {?>
+                      <td><?php echo $lv['id'] ?></td>
+                      <td><?php echo $lv['name']?></td>
+                     <td><?php echo $lv['parent_id']?></td>
+
+                     <?php } ?>        
                      <td>
-                        <a href="<?php echo base_url().'backend/level/edit/'.to_Encrypt($lv->id); ?>" class="btn ink-reaction btn-flat btn-primary active" data-toggle="tooltip" data-placement="top" data-original-title="Edit <?php echo $lv->name; ?>">
+                        <a href="<?php echo base_url().'backend/level/edit/'.to_Encrypt($lv['id']); ?>" class="btn ink-reaction btn-flat btn-primary active" data-toggle="tooltip" data-placement="top" data-original-title="Edit <?php echo $lv['name']; ?>">
                         Edit  <i class="fa fa-edit  fa-lg"></i>
                         </a>
-                          <a href="<?php echo base_url().'backend/level/delate/'.to_Encrypt($lv->id); ?>" class="btn ink-reaction btn-flat btn-primary active" data-toggle="tooltip" data-placement="top" data-original-title="Delate <?php echo $lv->name; ?>">
+                          <a href="<?php echo base_url().'backend/level/delate/'.to_Encrypt($lv['id']); ?>" class="btn ink-reaction btn-flat btn-primary active" data-toggle="tooltip" data-placement="top" data-original-title="Delate <?php echo $lv['name'] ?>">
                         Delate  <i class="fa fa-trash  fa-lg"></i>
                         </a>
                         

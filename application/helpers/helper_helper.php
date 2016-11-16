@@ -46,31 +46,31 @@
 	}
 
 	function do_upload_single($input = 'img', $path='./uploads/')
-	{
-		$CI =& get_instance();
+    {
+        $CI =& get_instance();
 
-		$config = array(
-            'upload_path' 		=> $path,
-            'max_size' 			=> 1024 * 100,
-            'allowed_types' 	=> 'gif|jpeg|jpg|png',
-            'overwrite' 		=> true,
-            'remove_spaces'	 	=> true,
-            'encrypt_name' 		=> true
+        $config = array(
+            'upload_path'       => $path,
+            'max_size'          => 1024 * 100,
+            'allowed_types'     => 'gif|jpeg|jpg|png',
+            'overwrite'         => true,
+            'remove_spaces'     => true,
+            'encrypt_name'      => true
         );
 
-		$CI->load->library('upload', $config);
+        $CI->load->library('upload', $config);
 
-		if ( ! $CI->upload->do_upload($input))
-		{
-				$error = array('error' => $CI->upload->display_errors());
-				return $error;
-		}
-		else
-		{
-				$data = array('data' => $CI->upload->data());
-				return $data;
-		}
-	}
+        if ( ! $CI->upload->do_upload($input))
+        {
+                $error = array('error' => $CI->upload->display_errors());
+                return $error;
+        }
+        else
+        {
+                $data = array('data' => $CI->upload->data());
+                return $data;
+        }
+    }
 
 	function do_upload_multiple($attachName='image', $path='./uploads/') 
 	{    

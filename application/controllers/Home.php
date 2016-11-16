@@ -12,9 +12,21 @@ class Home extends CI_Controller {
 	public function index()
 	{
 
-		$this->template->load("template",'home/index');
+		$data['slider']		= $this->model->get_slider();
+		$data['f1']			= $this->model->get_fone();
+		$data['motogp']		= $this->model->get_gp();
+		$data['basket']		= $this->model->get_basket();
+		$data['sepakbola']	= $this->model->get_sepakbola();
+		$data['bulutangkis']= $this->model->get_bulutangkis();
+
+		$data['latest']		= $this->model->get_latest();
+
+
+		$this->template->load("template",'home/index',$data);
 		
 	}
+
+
 
 }
 

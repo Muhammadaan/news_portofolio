@@ -122,6 +122,54 @@ class Authusermodel extends CI_Model {
 			
 	}
 
+	public function insertfb($data)
+	{
+		$id 	=$data['id'];
+		$picture = $data['picture'];
+		$name  = $data['first_name'];
+		$levelid = $this->get_level_id('member'); 
+
+		$idd = $this->get_id($id);
+		
+			$response = array();
+			if ($idd != false) {
+				$response['id'] 	= $idd[0]->id;
+				$response['name']	= $idd[0]->name;
+				$response['email']	= $idd[0]->email;
+				$response['idlevel']= $idd[0]->id_level;
+
+			} else {
+				 $this->db->set("fb_id",$id)
+							->set("name",$name)
+							->set("id_level",$levelid)
+							->set("fb_picture","https://graph.facebook.com/".$id."/picture?type=normal")
+							->set("created_at", date("Y-m-d H:i:s"))
+							->insert("auth_user");
+							$db = $this->db->insert_id();
+				
+				$response['id'] 	= $db;
+				$response['name']	= $name;
+			}
+
+		return $response;
+			
+	}
+
+	public function get_id($id)
+	{ 
+		$this->db->select('*');
+        $this->db->from('auth_user');
+        $this->db->where('fb_id',$id);
+        $this->db->or_where('google_id',$id);
+        $this->db->limit( 1 );
+        $iidd = false;
+        $iidd = $this->db->get();
+        $iidd = $iidd->result();
+        return $iidd;
+
+		
+	}
+
 }
 
 /* End of file Authusermodel.php */

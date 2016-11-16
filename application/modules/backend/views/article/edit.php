@@ -64,25 +64,38 @@
                 </div>
               <div class="form-group">
                 <label>
-                  <input type="checkbox" class="minimal" name="status" <?php  ?>  >
+                  <input type="checkbox" class="minimal" name="status" <?php if( $article['status'] == 'active') echo "checked";  ?>  >
                     <span>Active Article</span>
                   
                 </label>
               </div>
 
-             <div class="form-group">
-                <div class="placeimage">
-                  <span class="file-input btn btn-file photos">
-                  
-                    <img class="border-white border-xl img-responsive auto-width" src="<?php echo base_url() ?>assets/backend/img/balloon.jpg" alt="" style="width:600px; height:320px;">
-                    <input type="file" name="image[]" class="attach" multiple>
-                  </span>
-                    <a href="#" class="deleted-btn"><i class="fa fa-times"></i></a>
-                  
-                </div>
-                
-                  <a type="button" class="btn ink-reaction btn-raised btn-primary moreimage">Add Image</a>
-                </div>
+            <div class="form-group" id="place_image">
+
+                <?php
+                  if ($article['image'] == "") {
+                ?>  <script>
+                    $('#place_image').hide();
+                            $('#btn_choose_image').html('Update Image');
+                          </script>
+                        <?php   
+                            }else{
+                        ?>
+                          <script>
+                              $('#place_image').show();
+                            $('#btn_choose_image').html('Update Image');
+                             </script>
+
+                        <?php
+                            } 
+                ?>
+
+                            <img src="<?php echo base_url(isset($article['image']) ? $article['image'] : '')?>" id="image_category" style="width: 600px; height:300px;" name="">
+                        </div>
+                        <div class="form-group">
+                            <a class="btn btn-primary" id="btn_choose_image" onclick="$('#choose_image').click();">Choose Image</a>
+                            <input style="display: none;" type="file" id="choose_image" name="image"></input>
+                        </div>
 
 
               </div>
@@ -106,31 +119,9 @@
     </section>   
 
 <script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/jquery-1.11.2.min.js" ></script><script type="text/javascript">
-$('.moreimage').on('click', function(){
-      $('.placeimage').append('<span class="file-input btn btn-file photos">'+
-                    
-                    '<img class="border-white border-xl img-responsive auto-width" src="<?php echo base_url() ?>assets/backend/img/balloon.jpg" alt="" style="width:600px; height:320px;">'+
-                    '<input type="file" name="image[]" multiple class="attach">'+
-                    '<div class="form-group"  style="width:600px;text-align:left;">'+
-                   
-                  '</div>'+
-                  '</span>'
-                  +'<a href="#" class="deleted-btn"><i class="fa fa-times"></i></a>'
-                  )
-    });
 
-    $(document).on('change','.attach',function(){
-        var el = $(this).siblings('img');
-        var files = !!this.files ? this.files : [];
-        if (!files.length || !window.FileReader) return;
-        if (/^image/.test( files[0].type)){ 
-                var reader = new FileReader(); 
-                reader.readAsDataURL(files[0]);
-                reader.onloadend = function(){ 
-                    el.attr("src",this.result);
-        }
-        }
-    });
+
+     
 
     $(document).on('click','.deleted-btn', function(){
       $(this).parent().remove();
@@ -154,6 +145,20 @@ $('.moreimage').on('click', function(){
     });
 
     $('#name_img').attr('required');
+
+    $(document).on('change','#choose_image',function(){
+        var el = $("#image_category");
+        var files = !!this.files ? this.files : [];
+        if (!files.length || !window.FileReader) return;
+            if (/^image/.test( files[0].type)){ 
+                var reader = new FileReader(); 
+                reader.readAsDataURL(files[0]);
+                reader.onloadend = function(){ 
+                    el.attr("src",this.result);
+                    $('#place_image').show();
+                }
+            }
+      });
 
 </script>
 

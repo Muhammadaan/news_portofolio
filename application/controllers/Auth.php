@@ -7,13 +7,16 @@ class Auth extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('authmodel','model');
-		
-	}
 
+		$lang = $this->session->userdata("lang") == null ? "jawa" : $this->session->userdata("lang");
+        $this->lang->load($lang, $lang);  	
+	}
 	public function index()
 	{	
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');		
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
+
+
 
 		$user = $this->model->get_login(
 			$this->input->post('email'),
@@ -65,7 +68,8 @@ class Auth extends CI_Controller {
 
 	public function changepassword()
 	{
-		# code...
+
+
 	}
 
 	public function logout()
@@ -74,9 +78,9 @@ class Auth extends CI_Controller {
 		redirect('auth','refresh');
 	}
 
-
-
+	public function languages($get_lang)
+	{
+		$this->session->set_userdata('lang',$get_lang);
+		redirect('auth');		
+	}
 }
-
-/* End of file Auth.php */
-/* Location: ./application/controllers/Auth.php */

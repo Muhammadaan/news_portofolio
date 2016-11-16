@@ -31,15 +31,22 @@
                 <div class="form-group">
                   <label >Password</label>
                   <p class="help-block min_pass" style="color:blue; display:none"></p>
-                  <input type="password" class="form-control" id="pwd" name="pwd" data-rule-minlength="6">
+                  <input type="password" class="form-control pass" id="pwd" name="pwd" data-rule-minlength="6">
                 </div>
                  <div class="form-group">
                   <label >Confirm Password</label>
                    <p class="help-block error_pass" style="color:blue; display:none"></p>
-                 <input type="password" class="form-control" id="cpwd" name="cpwd"  data-rule-minlength="6">
+                 <input type="password" class="form-control pass" id="cpwd" name="cpwd"  data-rule-minlength="6">
                    
                 </div>
 
+                <div class="form-group">
+                <label>
+                  <input type="checkbox" class="show" name="status">
+                    <span>Show Password</span>
+                  
+                </label>
+              </div>
 
               <div class="form-group">
                 <label>
@@ -71,6 +78,7 @@
  <script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/jquery-1.11.2.min.js" ></script>   
 <script type="text/javascript">
     $(document).ready(function(){
+        
         
         $(document).on('blur, change', '#email', function(){
             $.ajax({
@@ -107,6 +115,18 @@
             $('#form').find('.submit').attr('disabled', false);
         });
 
+
+        $(document).on('click','.show',function () {
+
+          if ( $(this).is (':checked')) {
+              $('.pass').attr('type', 'text');
+          } else{
+             $('.pass').attr('type', 'password');
+          }
+          
+        });
+
+
         $(document).on('change', '#cpwd', function(){
             var pass    = $('#pwd').val();
             var cpass   = $(this).val();
@@ -137,6 +157,8 @@
                 $('#form').find('.submit').attr('disabled', false);
             }
         });
+
+
 
 
 
