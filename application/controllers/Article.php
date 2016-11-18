@@ -17,7 +17,9 @@ class Article extends CI_Controller {
 	}
 
 	public function detail($slug)
-	{
+	{	
+		$this->model->count_read($slug);
+
 		$article 	 			=$this->model->get_detail($slug);
 		$data['article']  	 	=$article[0];
 		$this->template->load('template','article/detail',$data);

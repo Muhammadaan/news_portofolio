@@ -55,6 +55,19 @@ class Homemodel extends CI_Model {
 
 	}
 
+	public function get_populer()
+	{
+		$this->db->select('article.*,category.name as namecategory');
+		$this->db->where('article.status', "active");
+		$this->db->where('article.type', "blog");
+		$this->db->join('category', 'article.category_id = category.id', 'left');
+		$this->db->order_by('article.count_read', 'desc');
+		$query = $this->db->get('article',3);
+		$data = $query->result();
+		return $data;
+		
+	}
+
 	public function get_gp()
 	{
 		$category_id		= $this->get_category('motogp');

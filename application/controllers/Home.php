@@ -18,6 +18,7 @@ class Home extends CI_Controller {
 		$data['basket']		= $this->model->get_basket();
 		$data['sepakbola']	= $this->model->get_sepakbola();
 		$data['bulutangkis']= $this->model->get_bulutangkis();
+		$data['populer']	= $this->model->get_populer();
 
 		$data['latest']		= $this->model->get_latest();
 

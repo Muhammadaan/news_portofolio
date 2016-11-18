@@ -23,6 +23,14 @@ class Articlemodel extends CI_Model {
 		
 	}
 
+
+	public function count_read($slug)
+	{
+		$this->db->where('article.slug', $slug);
+		$this->db->set('count_read','count_read +1',FALSE);
+		$this->db->update('article');
+	}
+
 	public function get_category($cat , $num ,$offset)
 	{	
 

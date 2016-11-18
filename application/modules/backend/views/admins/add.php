@@ -46,7 +46,7 @@
                     <span>Show Password</span>
                   
                 </label>
-              </div>
+                </div>
 
               <div class="form-group">
                 <label>

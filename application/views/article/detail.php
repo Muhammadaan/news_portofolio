@@ -26,11 +26,14 @@
 				$date= date_create($article['created_at']);
 				// $date= $article['created_at'];
 
-				echo date_format( $date,"d Y M" );
+				echo date_format( $date,"d-Y-M" );
 
 				 ?>
 
 				<a href="#" class="date-icon icon-rss"> <?php echo $article['write_by']; ?> </a>
+				<a href="#" class="date-icon icon-rss"> <?php echo $article['count_read']; ?> </a>
+
+
 				<p> <?php echo $article['description']; ?> </p>
 			</section>
 			

@@ -16,15 +16,55 @@
 					<button type="submit" class="btn btn-primary"> Cari </button>
 					</p>
 				</form>
-
 			</div>
-
 		</div>
-
 	</div>
 	
 		
-			
+	
+
+
+		<div class="row">
+			<div class="col-md-12 section-block-medium three-horizon-post">
+
+				<div class="headline-row">
+							<h1 class="section-title caticon sbx"><i>N</i><span class="news"></span>Populer News</h1>
+				</div>
+				<div class="row">
+					<!-- Box -->
+					<?php foreach ($populer as $list): ?>
+						
+				
+					<div class="col-md-4 col-sm-12 col-xs-12">
+					<div class="post post-spacer">
+						<div class="entry-header">
+							<?php if($list->image){  ?>
+						<img src=" <?php echo base_url().$list->image?>" class="img-responsive" alt="Lazy"> 
+						<?php } else {  ?>
+						<img src=" <?php echo base_url()?>assets/frontend/img/a.jpg" class="img-responsive" alt="Lazy"> 
+						<?php } ?>
+							<!-- Post content -->
+							<div class="post-content">
+								<h2 class="entry-title">
+									<a href="#category" class="caticon"><i>T</i><span class="tech"></span> <?php echo $list->namecategory; ?> </a>
+									<a href=" <?php echo base_url()."article/detail/".$list->slug?> " class="title">  <?php echo $list->title; ?></a>
+								</h2>
+							</div>
+						</div>
+					</div>
+					</div>
+						<?php endforeach ?>
+					<!-- Box -->
+					
+					<!-- Box -->
+					
+
+				</div>
+			</div>
+			<div class="clearfix visible-xs-block"></div>
+		</div>
+
+
 		
 		
 		
@@ -42,8 +82,8 @@
 						<!-- POST -->
 						<div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
 						<div class="headline-row">
-						<h1 class="section-title caticon sbx"><i>N</i><span class="news"></span>Formula 1</h1>
-							</div>
+							<h1 class="section-title caticon sbx"><i>N</i><span class="news"></span>Formula 1</h1>
+						</div>
 
 							<?php foreach ($f1 as $list): 
 							$date=date_create($list->created_at);
